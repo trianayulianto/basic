@@ -22,3 +22,6 @@ Route::group(['prefix' => 'v1'], function () {
         Route::delete('{id}/delete', 'UserController@destroy');
     });
 });
+
+Route::post('/register', 'Api\AuthController@register');
+Route::post('/login', 'Api\AuthController@login');
