@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::group(['prefix' => 'v1'], function () {
+Route::group(['prefix' => 'v1', 'middleware' => ['auth:api','verified']], function () {
     Route::group(['prefix' => 'user'], function () {
         Route::get('/', 'UserController@index');
         Route::post('/store', 'UserController@store');
@@ -28,3 +28,6 @@ Route::post('/login', 'Api\AuthController@login');
 
 Route::post('/password/email', 'Api\ForgotPasswordController@sendResetLinkEmail');
 Route::post('/password/reset', 'Api\ResetPasswordController@reset');
+
+Route::get('/email/resend', 'Api\VerificationController@resend')->name('verification.resend');
+Route::get('/email/verify/{id}/{hash}', 'Api\VerificationController@verify')->name('verification.verify');
