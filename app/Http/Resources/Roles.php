@@ -14,8 +14,6 @@ class Roles extends ResourceCollection
      */
     public function toArray($request)
     {
-        return $this->collection->map(function ($item) use ($request) {
-            return (new Role($item))->toArray($request);
-        });
+        return Role::collection($this->collection);
     }
 }

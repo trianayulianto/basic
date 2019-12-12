@@ -20,7 +20,7 @@ class User extends JsonResource
             'email' => $this->email,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'role' => new Roles(\App\User::find($this->id)->roles)
+            'role' => Role::collection($this->roles)
         ];
     }
 }
