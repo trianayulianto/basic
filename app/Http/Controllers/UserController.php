@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use \App\User;
-use App\Http\Resources\Users;
+use App\Http\Resources\User as UserResource;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -15,12 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return new Users(User::all());
-        // $data['row'] = User::all();
-        // foreach ($data['row'] as $key => $value) {
-        //     $data['row'][$key]->role = User::find($value->id)->roles;
-        // }
-        // return response()->json($data['row'], 200);
+        return UserResource::collection(User::all());
     }
 
     /**
@@ -54,9 +49,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $data['row'] = User::find($id);
-        $data['row']->roles;
-        return response()->json($data['row'], 200);
+        return new UserResource(User::find($id));
     }
 
     /**
