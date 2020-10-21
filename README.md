@@ -1,2 +1,3 @@
-# basic
-Simple rest api implementation with Laravel
+## Laravel Api
+
+# Laravel rest api dengan laravel passport
