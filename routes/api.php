@@ -15,11 +15,11 @@ use Illuminate\Http\Request;
 
 Route::group(['prefix' => 'v1', 'middleware' => ['auth:api','verified']], function () {
     Route::group(['prefix' => 'user'], function () {
-        Route::get('/', 'UserController@index');
-        Route::post('/store', 'UserController@store');
+        // Route::get('/', 'UserController@index');
+        // Route::post('/store', 'UserController@store');
         Route::get('/{id}/show', 'UserController@show');
         Route::put('/{id}/update', 'UserController@update');
-        Route::delete('{id}/delete', 'UserController@destroy');
+        // Route::delete('{id}/delete', 'UserController@destroy');
     });
 });
 
